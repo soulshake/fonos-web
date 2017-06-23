@@ -1,0 +1,34 @@
+{
+	"ImportPath": "github.com/soulshake/pawd",
+	"GoVersion": "go1.7",
+	"GodepVersion": "v75",
+	"Deps": [
+		{
+			"ImportPath": "github.com/gorilla/context",
+			"Rev": "215affda49addc4c8ef7e2534915df2c8c35c6cd"
+		},
+		{
+			"ImportPath": "github.com/gorilla/mux",
+			"Rev": "8a875a034c69b940914d83ea03d3f1299b4d094b"
+		},
+		{
+			"ImportPath": "github.com/satori/go.uuid",
+			"Comment": "v1.1.0-6-gb061729",
+			"Rev": "b061729afc07e77a8aa4fad0a2fd840958f1942a"
+		},
+		{
+			"ImportPath": "github.com/shutterstock/go-stockutil/stringutil",
+			"Comment": "0.2.3-2-g45fbaaa",
+			"Rev": "45fbaaaf36a08d5f6764c57cf3a2143e5d894bca"
+		},
+		{
+			"ImportPath": "github.com/auroralaboratories/pulse",
+			"Rev": "b07309b36267977f0d3957b3047de890f6a5ec73"
+		},
+		{
+			"ImportPath": "gopkg.in/oleiade/reflections.v1",
+			"Comment": "v1.0.0",
+			"Rev": "2b6ec3da648e3e834dc41bad8d9ed7f2dc6a9496"
+		}
+	]
+}

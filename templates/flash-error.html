@@ -1,0 +1,16 @@
+{{ define "flash-error" }}
+  {{ if .FlashSuccessMessage }}
+    <div class="callout ok">
+      <div class="marker"><span></span></div>
+      <div class="body"><strong>Success</strong> {{ .FlashSuccessMessage }} </div>
+    </div>
+  {{ end }}
+    
+  {{ if .FlashErrorMessage }}
+    <div class="callout alert">
+      <div class="marker"><span></span></div>
+      <div class="body"><strong>Whoops...</strong> {{ .FlashErrorMessage }} </div>
+    </div>
+  {{ end }}
+{{ end }}
+

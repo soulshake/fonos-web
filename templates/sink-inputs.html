@@ -1,0 +1,64 @@
+{{ define "body" }}
+<html>
+  <head>
+    <style type='text/css'>
+      body {
+          zoom: 100%;
+      }
+    </style>
+    <title>Sink Inputs</title>
+  </head> 
+  <body>
+  <h1>Sink Inputs</h1>
+
+    <table border="1">
+    <tr>
+      <td>BaseVolumeStep</td>
+      <td>CardIndex</td>
+      <td>Channels</td>
+      <td>Client</td>
+      <td>CurrentVolumeStep</td>
+      <td>Description</td>
+      <td>DriverName</td>
+      <td>Index</td>
+      <td>ModuleIndex</td>
+      <td>MonitorOfSinkIndex</td>
+      <td>MonitorOfSinkName</td>
+      <td>Muted</td>
+      <td>Name</td>
+      <td>NumFormats</td>
+      <td>NumPorts</td>
+      <td>NumVolumeSteps</td>
+      <td>State</td>
+      <td>VolumeFactor</td>
+    </tr>
+  {{ range $input := .SinkInputs }}
+    <div class="box">
+    <tr>
+      <td> {{ $input.BaseVolumeStep }} </td>
+      <td> {{ $input.CardIndex }} </td>
+      <td> {{ $input.Channels }} </td>
+      <td> [not shown] </td>
+      <td> {{ $input.CurrentVolumeStep }} </td>
+      <td> {{ $input.Description }} </td>
+      <td> {{ $input.DriverName }} </td>
+      <td> {{ $input.Index }}  </td>
+      <td> {{ $input.ModuleIndex }} </td>
+      <td> {{ $input.MonitorOfSinkIndex }} </td>
+      <td> {{ $input.MonitorOfSinkName }} </td>
+      <td> {{ $input.Muted }} </td>
+      <td> {{ $input.Name }} </td>
+      <td> {{ $input.NumFormats }} </td>
+      <td> {{ $input.NumPorts }} </td>
+      <td> {{ $input.NumVolumeSteps }} </td>
+      <td> {{ $input.State }} </td>
+      <td> {{ $input.VolumeFactor }} </td>
+    </tr>
+    </div>
+  {{ end }}
+    </table>
+
+
+  </body>
+  </html>
+{{ end }}

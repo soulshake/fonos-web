@@ -1,0 +1,26 @@
+{{define "head"}}{{end}}
+
+{{ define "body" }}
+  <html>
+    <form method="POST" action="">
+        Enter command: <br>
+        <input type="text" autofocus name="cmd" placeholder="">
+        <button>Send</button>
+    </form>
+
+
+  {{ if .Input }}
+    <h3>Input</h3>
+    <pre>
+    {{ .Input }}
+    </pre>
+  {{ end }}
+
+  {{ if .Output }}
+    <h3>Output</h3>
+    <pre>
+    {{ .Output }}
+    </pre>
+  {{ end }}
+
+{{ end }}

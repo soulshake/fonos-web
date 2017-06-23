@@ -1,0 +1,136 @@
+{{ define "body" }}
+
+<script src="/assets/css/bootstrap.min.css"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+
+	<div id="sinks">
+
+    <h2>Sink volumes</h2>
+    {{ range $sink := .Sinks }}
+        <div class="container-fluid">
+            <!-- row 1 -->
+            <div id="s1" class="row expanded">
+
+                <div class="col-lg-4" >
+                    <div class="muted">
+                        {{ if eq $sink.Muted true }}
+                            <input type="checkbox" checked>
+                        {{ else }}
+                            <input type="checkbox">
+                        {{ end }}
+                    </div>
+                </div>
+
+                <div class="col-lg-8" style="width:90% ; padding-top: 5px;">
+                    <div class="volume" >
+                        {{ $sink.Description }}
+                    </div>
+                </div>
+            </div>
+
+            <!-- row 2 -->
+            <div id="s1" class="row expanded">
+
+                <div class="col-lg-3">
+                    <div class="volume-step">
+                        {{ $sink.CurrentVolumeStep }}
+                    </div>
+                </div>
+
+                <!--
+                <div class="col-lg-12"  style="background-color:white; width=80% !important;">
+                -->
+                    <div class="volume-slider">
+                            {{ if eq $sink.Muted true }}
+                                <input type="range"
+                                    min="0"
+                                    max="{{ $sink.NumVolumeSteps }}"
+                                    step="1"
+                                    list="volumescale"
+                                    value={{ $sink.CurrentVolumeStep }} disabled>
+                            {{ else }}
+                                <input type="range"
+                                    min="0"
+                                    max={{ $sink.NumVolumeSteps }}
+                                    step="1"
+                                    list="volumescale"
+                                    value={{ $sink.CurrentVolumeStep }}>
+                            {{ end }}
+                    </div>
+                <!--
+                </div>
+                -->
+            </div>
+        </div>
+    {{ end }}
+    </div>
+
+	<datalist id="volumescale"><option>100</option></datalist>
+
+    <script>
+        var activityTimeout = setTimeout(inActive, 4000);
+
+        $(document).ready(function() {
+            xhr_get({});
+        });
+
+        $('input[type="checkbox"]').on("change",function(){
+           xhr_get({id: this.parentNode.id, muted: this.value});
+        });
+
+        $('input[type="range"]').on("change",function(){
+           xhr_get({id: this.parentNode.id, volume: this.value});
+        });
+
+        /* trying to make visual update on system volume change */
+        $('input[type="range"]').on("activityTimeout",function(){
+           xhr_get({id: this.parentNode.id, volume: this.value});
+        });
+
+        $('input[type="range"]').on('touchstart mousedown', function(){
+            clearTimeout(activityTimeout);
+        });
+        $('input[type="range"]').on('touchend mouseup', function(){
+            resetActive();
+        });
+        $('input[type="checkbox"]').on("change",function(){
+           if(this.checked){
+               value = 1;
+            }else{
+                value = 0;
+            }
+           xhr_get({id: this.parentNode.parentNode.id, muted: value});
+        });
+
+        function xhr_get(parameters){
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:1337/api",
+                dataType: "json",
+                data: parameters
+            }).done(function( resp ) {
+                console.log( resp );
+                $('#inputs div').remove();
+                $('#sinks div').remove();
+                showPanel(resp);
+            });
+            }
+
+
+
+        function resetActive(){
+            $(document.body).attr('class', 'active');
+            clearTimeout(activityTimeout);
+            activityTimeout = setTimeout(inActive, 4000);
+        }
+
+        // No activity do something.
+        function inActive(){
+           $(document.body).attr('class', 'inactive');
+           xhr_get({});
+           resetActive();
+        }
+    </script>
+
+{{ end }}

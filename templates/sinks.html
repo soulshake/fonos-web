@@ -1,0 +1,60 @@
+{{ define "body" }}
+<html>
+  <head>
+    <style type='text/css'>
+      body {
+          zoom: 100%;
+      }
+    </style>
+    <title>Sinks</title>
+  </head> 
+  <body>
+  <h1>Sinks</h1>
+
+  {{ range $sink := .Sinks }}
+    <table border="1">
+    <tr>
+      <td>Client</td>
+      <td>CardIndex</td>
+      <td>Description</td>
+      <td>DriverName</td>
+      <td>Index</td>
+      <td>ModuleIndex</td>
+      <td>MonitorSourceIndex</td>
+      <td>MonitorSourceName</td>
+      <td>Muted</td>
+      <td>Name</td>
+      <td>NumFormats</td>
+      <td>NumPorts</td>
+      <td>NumVolumeSteps</td>
+      <td>State</td>
+      <td>Channels</td>
+      <td>CurrentVolumeStep</td>
+      <td>VolumeFactor</td>
+    </tr>
+    <tr>
+      <td> [not shown] </td>
+      <td> {{ $sink.CardIndex }} </td>
+      <td> {{ $sink.Description }} </td>
+      <td> {{ $sink.DriverName }} </td>
+      <td> {{ $sink.Index }}  </td>
+      <td> {{ $sink.ModuleIndex }} </td>
+      <td> {{ $sink.MonitorSourceIndex }} </td>
+      <td> {{ $sink.MonitorSourceName }} </td>
+      <td> {{ $sink.Muted }} </td>
+      <td> {{ $sink.Name }} </td>
+      <td> {{ $sink.NumFormats }} </td>
+      <td> {{ $sink.NumPorts }} </td>
+      <td> {{ $sink.NumVolumeSteps }} </td>
+      <td> {{ $sink.State }} </td>
+      <td> {{ $sink.Channels }} </td>
+      <td> {{ $sink.CurrentVolumeStep }} </td>
+      <td> {{ $sink.VolumeFactor }} </td>
+    </tr>
+    </table>
+  {{ end }}
+
+
+  </body>
+  </html>
+{{ end }}

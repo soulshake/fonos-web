@@ -1,0 +1,60 @@
+{{ define "body" }}
+
+<html>
+  <head>
+    <style type='text/css'>
+      body {
+          zoom: 100%;
+      }
+    </style>
+    <title>Remote control</title>
+  </head> 
+  <body>
+  <h1>Volume</h1>
+
+  {{ range $sink := .Sinks }}
+    <table border="1">
+    <tr>
+      <td>Muted</td>
+      <td>Name</td>
+      <td>NumVolumeSteps</td>
+      <td>State</td>
+      <td>Channels</td>
+      <td>CurrentVolumeStep</td>
+      <td>VolumeFactor</td>
+      <td>Slider</td>
+    </tr>
+    <tr>
+      <td> {{ $sink.Muted }} </td>
+      <td> {{ $sink.Name }} </td>
+      <td> {{ $sink.NumVolumeSteps }} </td>
+      <td> {{ $sink.State }} </td>
+      <td> {{ $sink.Channels }} </td>
+      <td> {{ $sink.CurrentVolumeStep }} </td>
+      <td> {{ $sink.VolumeFactor }} </td>
+      <td>
+        <!-- Slider bar -->
+        <input
+          type="range"
+          min="0"
+          max="1"
+          value="{{ $sink.VolumeFactor }}"
+          step=".1"
+          onchange="showValue(this.value)" />
+        <span id="range">{{ $sink.VolumeFactor }}</span>
+        <script type="text/javascript">
+        function showValue(newValue)
+        {
+          document.getElementById("range").innerHTML=newValue;
+        }
+        </script>
+      </td>
+
+    </tr>
+    </table>
+  {{ end }}
+
+
+  </body>
+  </html>
+{{ end }}

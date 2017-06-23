@@ -1,0 +1,35 @@
+{{ define "dashboard" }}
+<!doctype html>
+
+	<body>
+		<div id="wrap">
+		{{ template "header" . }}
+		<div class="row expanded" id="page-contents">
+			<div id="menu" class="medium-3 large-2 columns show-for-medium">
+				<ul class="vertical menu">
+					<li> <a href="/" style="background-image: url('/assets/img/user.svg');">Dashboard</a></li>
+					<li> <a href="/pawebcontrol" style="background-image: url('/assets/img/integrations.svg');">PAWebControl</a></li>
+					<li> <a href="/volumes" style="background-image: url('/assets/img/volume.svg');">Volume</a></li>
+					<li> <a href="/sinks" style="background-image: url('/assets/img/settings.svg');">Sinks</a></li>
+					<li> <a href="/sink_inputs" style="background-image: url('/assets/img/workflows.svg');">Sink Inputs</a></li>
+					<li> <a href="/pacmd" style="background-image: url('/assets/img/support.svg');">pacmd</a></li>
+					<li> <a href="/outputs" style="background-image: url('/assets/img/speaker.svg');">Outputs</a></li>
+				</ul>
+			</div>
+
+			<div id="main" class="small-12 medium-9 large-10 medium-offset-3 large-offset-2 columns">
+
+				<div class="main-container">
+					{{ template "flash-error" . }}
+					{{ template "body" . }}
+				</div>
+			</div>
+		</div>
+			</div>
+			<div id="footer" class="small-12 columns text-right">
+				<ul class="menu align-right">
+					<li><a href="https://github.com/soulshake/fonos-web">GitHub</a></li>
+				</ul>
+			</div>
+	</body>
+{{ end }}

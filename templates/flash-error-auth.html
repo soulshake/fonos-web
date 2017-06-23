@@ -1,0 +1,13 @@
+{{ define "flash-error-auth" }}
+  {{ if .flashSuccessMessage }}
+  <div class="callout ok">
+      {{ .flashSuccessMessage }}
+  </div>
+  {{ end }}
+  {{ if .flashErrorMessage }}
+  <div class="callout error">
+      {{ .flashErrorMessage }}
+  </div>
+  {{ end }}
+{{ end }}
+

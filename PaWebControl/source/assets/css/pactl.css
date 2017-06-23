@@ -1,0 +1,59 @@
+
+#sinks input[type="range"]{
+    text-align: right;
+	vertical-align:middle;
+    border: 3px solid red;
+    padding: 2px;
+    width: 100%;
+}
+#sinks input[type="text"]{
+	vertical-align:middle;
+    border: 3px solid yellow;
+    float: left;
+}
+#sinks input[type="checkbox"]{
+	transform: scale(2.0);
+	float: left;
+    margin: 15px;
+}
+
+#sinks .volume-step{
+    text-align: center;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+    transform: scale(1.2);
+}
+
+#sinks .volume-slider{
+    vertical-align: middle;
+    width: 90%;
+    text-align: center;
+    padding-left: 5px;
+}
+
+#sinks div{
+	padding:1px 1px;
+	width: auto;
+    margin: 0px;
+    border: 0px solid purple;
+}
+
+#sinks div span{
+	padding: 5px;
+    height: auto;
+    margin: 25px;
+    border: 0px solid blue;
+}
+
+#sinks {
+    border: 1px solid green;
+    position: relative;
+    width: auto;
+}
+
+body{
+	margin: 10;
+	padding: 10;
+    border: 5px solid black;
+}

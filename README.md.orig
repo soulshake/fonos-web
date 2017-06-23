@@ -1,0 +1,39 @@
+# RemoteGo
+A remote control server written on Golang
+
+# Install
+git clone https://github.com/HaCk3Dq/RemoteGo.git
+
+cd RemoteGo
+
+go build remote.go
+
+./remote
+
+if u have *Linux x86_64*, u can use compiled one in RemoteGo/bin/remote
+
+# Usage
+It creates a server on a **localhost:1337/linux**
+where u can post some commands, such as:
+
++ "+" - which makes volume louder by 5%
++ "-" - which makes volume quieter by 5%
+
+**Music command compatible only with Foobnix, fix the code for ur music player**
+
++ "next" - turns the next music track
++ "prev" - turns the previous music track
++ "pause"
++ "play"
+
+**Torrent commands are for Transmission (be sure that u turned on web interface and installed transmission-remote)**
+
++ "t start" - start all torrents
++ "t stop"  - stop all torrents
+
+# Screenshots
+
+![alt text](http://cs7064.vk.me/c622025/v622025535/18b2f/8rKUp13iPuQ.jpg "Screenshot")rerun -build github.com/soulshake/RemoteGo
+
+
+Note: this repo was born from HaCk3Dq/RemoteGo.

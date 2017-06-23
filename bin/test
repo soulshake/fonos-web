@@ -1,0 +1,25 @@
+#!/bin/sh
+
+set -e
+
+go get -t ./...
+
+rm -f coverage.txt
+
+testable() {
+    find . \
+        -not \( -path "./vendor/*" -prune \) \
+        -not \( -path "./Godeps/*" \) \
+        -name '*.go' \
+        -exec dirname {} \; \
+        | sort -u
+}
+
+for d in $(testable); do
+  go test -coverprofile=profile.out -covermode=atomic $d
+
+  if [ -f profile.out ]; then
+    cat profile.out >> coverage.txt
+    rm profile.out
+  fi
+done

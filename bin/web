@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ "$DEVELOPMENT" == "true" ]; then
+  $GOPATH/bin/rerun -watch $GOPATH/src/github.com/soulshake/pawd -build github.com/soulshake/pawd
+else
+  $GOPATH/bin/pawd
+fi
+

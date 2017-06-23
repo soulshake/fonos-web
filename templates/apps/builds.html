@@ -1,0 +1,45 @@
+{{define "head"}}{{end}}
+{{define "breadcrumbs"}}
+<li><a href="/">Dashboard</a></li>
+<li><a href="/grid/organizations/{{.Organization.Id}}/racks">{{.Organization.Name}}</a></li>
+<li>Builds</li>
+{{end}}
+{{define "body"}}
+
+{{$app := .App}}
+{{$org := .Organization}}
+{{$rack := .Rack}}
+
+
+<div class="row tab-content" role="builds">
+  <div class="column large-12">
+    <table class="table table-striped index table-breathe">
+      <tr>
+        <th>ID</th>
+        <th class="description-column">Description</th>
+        <th>Status</th>
+        <th>Started</th>
+        <th class="text-right">Elapsed</th>
+      </tr>
+      {{ range .Builds }}
+      <tr>
+        <td><code>{{ .Id }}</code></td>
+        <td class="description-column"><span
+            style="display:block;white-space:normal;overflow:hidden;">{{ .Description }}</span></td>
+        <td>{{ .Status }}</td>
+        <td>
+          <time class="timeago" 
+            data-toggle="tooltip"
+            data-title="{{ .Started }}"
+            datetime="{{ dateISO8601 .Started }}">
+            {{ .Started }}
+          </time>
+        </td>
+        <td class="text-right">{{ duration .Started .Ended }}</td>
+      </tr>
+      {{ end }}
+    </table>
+  </div>
+</div>
+{{end}}
+
